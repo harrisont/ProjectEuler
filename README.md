@@ -1,1 +1,1 @@
-My solutions to the problems on http://projecteuler.net as user sng.
+My solutions to the problems on http://projecteuler.net as user **sng**.
