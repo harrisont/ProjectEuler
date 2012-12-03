@@ -1,13 +1,11 @@
-from math import sqrt, ceil
-from functools import lru_cache
+from math import sqrt, ceil, floor
 
-@lru_cache(maxsize=None)
 def is_prime(n):
 	"""
 	>>> is_prime(0)
 	True
 	>>> is_prime(1)
-	True
+	False
 	>>> is_prime(2)
 	True
 	>>> is_prime(3)
@@ -18,12 +16,29 @@ def is_prime(n):
 	True
 	>>> is_prime(9)
 	False
+	>>> is_prime(13)
+	True
 	"""
-	upperBound = min(n, 1 + ceil(sqrt(n)))
-	for factor in range(2, upperBound):
-		if n % factor == 0:
-			return False
-	return True
+	if n == 1:
+		return False
+	elif n < 4:
+		return True
+	elif n % 2 == 0:
+		return False
+	elif n < 9:
+		return True
+	elif n % 3 == 0:
+		return False
+	else:
+		# Use the fact that all primes greater than 3 can be
+		# written as 6k +/- 1.
+		factor = 5
+		for factor in range(5, 1 + floor(sqrt(n)), 6):
+			if n % factor == 0:
+				return False
+			if n % (factor + 2) == 0:
+				return False
+		return True
 
 def prime_factors(n):
 	"""
