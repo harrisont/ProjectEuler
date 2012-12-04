@@ -6,6 +6,12 @@ from Common import Prime
 from collections import Counter
 
 def product(list):
+	"""
+	>>> product([2, 3, 4])
+	24
+	>>> product([])
+	1
+	"""
 	p = 1
 	for n in list:
 		p *= n
